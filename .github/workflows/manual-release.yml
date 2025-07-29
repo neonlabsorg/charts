@@ -59,8 +59,10 @@ jobs:
               echo "========================================="
               echo "Processing ref: $ref"
               echo "========================================="
-
-              # Checkout the specific ref
+              
+              # Clean working directory and checkout the specific ref
+              git reset --hard HEAD
+              git clean -fd
               git checkout "$ref"
 
               CHARTS_FOUND=0
