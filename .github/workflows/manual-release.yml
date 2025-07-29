@@ -1,0 +1,142 @@
+name: Manual Chart Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      refs:
+        description: 'Tags to deploy (e.g. app-1.3.10,app-1.3.9 or ipfs-cluster-0.0.30,ipfs-cluster-0.0.29)'
+        required: true
+        default: 'main'
+        type: string
+      chart_folder:
+        description: 'Which chart to deploy'
+        required: true
+        type: choice
+        options:
+          - app
+          - ipfs-cluster
+
+jobs:
+  manual-release:
+    permissions:
+      contents: write
+      pages: write
+      id-token: write
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Configure Git
+        run: |
+          git config user.name "$GITHUB_ACTOR"
+          git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
+
+      - name: Install Helm
+        uses: azure/setup-helm@v4
+        with:
+          version: v3.14.0
+
+      - name: Install chart-releaser
+        run: |
+          wget https://github.com/helm/chart-releaser/releases/download/v1.8.1/chart-releaser_1.8.1_linux_amd64.tar.gz
+          tar -xzf chart-releaser_1.8.1_linux_amd64.tar.gz
+          mv cr /usr/local/bin/cr
+
+      - name: Process all refs and package charts
+        run: |
+          # Create packages directory outside git working tree
+          mkdir -p /tmp/cr-release-packages
+          
+          TOTAL_CHARTS=0
+          PROCESSED_REFS=""
+          
+          # Simple parsing: split by comma and trim spaces
+          IFS=',' read -ra refs_array <<< "${{ inputs.refs }}"
+          
+          for ref in "${refs_array[@]}"; do
+            ref=$(echo "$ref" | xargs)  # trim whitespace
+            if [ -n "$ref" ]; then
+              echo "========================================="
+              echo "Processing ref: $ref"
+              echo "========================================="
+              
+              # Clean working directory and checkout the specific ref
+              git reset --hard HEAD
+              git clean -fd
+              git checkout "$ref"
+              
+              # Use selected chart folder
+              chart_dir="${{ inputs.chart_folder }}"
+              echo "Chart directory for $ref: $chart_dir"
+              
+              if [ -f "${chart_dir}/Chart.yaml" ]; then
+                echo "Found chart in: ${chart_dir}/"
+                
+                # Update dependencies and package chart
+                helm dependency update "${chart_dir}"
+                helm package "${chart_dir}" --destination /tmp/cr-release-packages
+                
+                TOTAL_CHARTS=$((TOTAL_CHARTS + 1))
+                PROCESSED_REFS="$PROCESSED_REFS $ref"
+              else
+                echo "Error: No Chart.yaml found in ${chart_dir}/ for tag $ref"
+                exit 1
+              fi
+            fi
+          done
+          
+          # Move packages back to working directory
+          mkdir -p .cr-release-packages
+          mv /tmp/cr-release-packages/* .cr-release-packages/
+
+          echo "========================================="
+          echo "Summary:"
+          echo "Total charts packaged: $TOTAL_CHARTS"
+          echo "Processed refs: $PROCESSED_REFS"
+          echo "========================================="
+
+          if [ $TOTAL_CHARTS -eq 0 ]; then
+            echo "No charts found in any of the specified refs"
+            exit 1
+          fi
+
+          echo "All packaged charts:"
+          ls -la .cr-release-packages/
+
+          # Save info for summary
+          echo "TOTAL_CHARTS=$TOTAL_CHARTS" >> $GITHUB_ENV
+          echo "PROCESSED_REFS=$PROCESSED_REFS" >> $GITHUB_ENV
+
+      - name: Upload all chart releases
+        run: |
+          cr upload \
+            --owner ${{ github.repository_owner }} \
+            --git-repo ${{ github.event.repository.name }} \
+            --package-path .cr-release-packages
+        env:
+          CR_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Update index and deploy to gh-pages
+        run: |
+          cr index \
+            --owner ${{ github.repository_owner }} \
+            --git-repo ${{ github.event.repository.name }} \
+            --package-path .cr-release-packages \
+            --index-path index.yaml \
+            --pages-branch gh-pages \
+            --push
+        env:
+          CR_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Summary
+        run: |
+          echo "## Manual Release Summary" >> $GITHUB_STEP_SUMMARY
+          echo "- **Chart Folder**: ${{ inputs.chart_folder }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Processed Refs**: $PROCESSED_REFS" >> $GITHUB_STEP_SUMMARY
+          echo "- **Total Charts Packaged**: $TOTAL_CHARTS" >> $GITHUB_STEP_SUMMARY
+          echo "- **Packaged Files**: $(ls .cr-release-packages/ | tr '\n' ', ' | sed 's/, $//')" >> $GITHUB_STEP_SUMMARY
+          echo "- **Deployed to**: gh-pages branch" >> $GITHUB_STEP_SUMMARY
+          echo "- **GitHub Releases**: Created for each chart version" >> $GITHUB_STEP_SUMMARY
