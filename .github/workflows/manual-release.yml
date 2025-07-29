@@ -47,14 +47,15 @@ jobs:
 
       - name: Process all refs and package charts
         run: |
-          mkdir -p .cr-release-packages
+          # Create packages directory outside git working tree
+          mkdir -p /tmp/cr-release-packages
           
           TOTAL_CHARTS=0
           PROCESSED_REFS=""
           
-                    # Simple parsing: split by comma and trim spaces
+          # Simple parsing: split by comma and trim spaces
           IFS=',' read -ra refs_array <<< "${{ inputs.refs }}"
-
+          
           for ref in "${refs_array[@]}"; do
             ref=$(echo "$ref" | xargs)  # trim whitespace
             if [ -n "$ref" ]; then
@@ -76,7 +77,7 @@ jobs:
                 
                 # Update dependencies and package chart
                 helm dependency update "${chart_dir}"
-                helm package "${chart_dir}" --destination .cr-release-packages
+                helm package "${chart_dir}" --destination /tmp/cr-release-packages
                 
                 TOTAL_CHARTS=$((TOTAL_CHARTS + 1))
                 PROCESSED_REFS="$PROCESSED_REFS $ref"
@@ -86,6 +87,10 @@ jobs:
               fi
             fi
           done
+          
+          # Move packages back to working directory
+          mkdir -p .cr-release-packages
+          mv /tmp/cr-release-packages/* .cr-release-packages/
 
           echo "========================================="
           echo "Summary:"
