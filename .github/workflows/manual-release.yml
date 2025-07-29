@@ -4,15 +4,17 @@ on:
   workflow_dispatch:
     inputs:
       refs:
-        description: 'Tags/branches to deploy (one per line, e.g. v1.0.0, v1.1.0, main)'
+        description: 'Tags to deploy (e.g. app-1.3.10,app-1.3.9 or ipfs-cluster-0.0.30,ipfs-cluster-0.0.29)'
         required: true
         default: 'main'
         type: string
-      charts_dir:
-        description: 'Directory containing chart folders (e.g., ./ or charts/)'
-        required: false
-        default: '.'
-        type: string
+      chart_folder:
+        description: 'Which chart to deploy'
+        required: true
+        type: choice
+        options:
+          - app
+          - ipfs-cluster
 
 jobs:
   manual-release:
@@ -64,24 +66,24 @@ jobs:
               git reset --hard HEAD
               git clean -fd
               git checkout "$ref"
-
-              CHARTS_FOUND=0
-              echo "Searching for charts in: ${{ inputs.charts_dir }}"
-
-              for chart_dir in "${{ inputs.charts_dir }}"/*/; do
-                if [ -f "${chart_dir}/Chart.yaml" ]; then
-                  echo "Found chart in: ${chart_dir}"
-                  CHARTS_FOUND=$((CHARTS_FOUND + 1))
-
-                  # Update dependencies and package chart
-                  helm dependency update "${chart_dir}"
-                  helm package "${chart_dir}" --destination .cr-release-packages
-                fi
-              done
-
-              echo "Charts found in $ref: $CHARTS_FOUND"
-              TOTAL_CHARTS=$((TOTAL_CHARTS + CHARTS_FOUND))
-              PROCESSED_REFS="$PROCESSED_REFS $ref"
+              
+              # Use selected chart folder
+              chart_dir="${{ inputs.chart_folder }}"
+              echo "Chart directory for $ref: $chart_dir"
+              
+              if [ -f "${chart_dir}/Chart.yaml" ]; then
+                echo "Found chart in: ${chart_dir}/"
+                
+                # Update dependencies and package chart
+                helm dependency update "${chart_dir}"
+                helm package "${chart_dir}" --destination .cr-release-packages
+                
+                TOTAL_CHARTS=$((TOTAL_CHARTS + 1))
+                PROCESSED_REFS="$PROCESSED_REFS $ref"
+              else
+                echo "Error: No Chart.yaml found in ${chart_dir}/ for tag $ref"
+                exit 1
+              fi
             fi
           done
 
@@ -108,8 +110,7 @@ jobs:
           cr upload \
             --owner ${{ github.repository_owner }} \
             --git-repo ${{ github.event.repository.name }} \
-            --package-path .cr-release-packages \
-            --skip-existing=false
+            --package-path .cr-release-packages
         env:
           CR_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -128,8 +129,8 @@ jobs:
       - name: Summary
         run: |
           echo "## Manual Release Summary" >> $GITHUB_STEP_SUMMARY
+          echo "- **Chart Folder**: ${{ inputs.chart_folder }}" >> $GITHUB_STEP_SUMMARY
           echo "- **Processed Refs**: $PROCESSED_REFS" >> $GITHUB_STEP_SUMMARY
-          echo "- **Charts Directory**: ${{ inputs.charts_dir }}" >> $GITHUB_STEP_SUMMARY
           echo "- **Total Charts Packaged**: $TOTAL_CHARTS" >> $GITHUB_STEP_SUMMARY
           echo "- **Packaged Files**: $(ls .cr-release-packages/ | tr '\n' ', ' | sed 's/, $//')" >> $GITHUB_STEP_SUMMARY
           echo "- **Deployed to**: gh-pages branch" >> $GITHUB_STEP_SUMMARY
