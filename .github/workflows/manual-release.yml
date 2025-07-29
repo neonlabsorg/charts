@@ -3,8 +3,8 @@ name: Manual Chart Release
 on:
   workflow_dispatch:
     inputs:
-      ref:
-        description: 'Branch or tag to deploy (e.g., main, v1.0.0)'
+      refs:
+        description: 'Tags/branches to deploy (one per line, e.g. v1.0.0, v1.1.0, main)'
         required: true
         default: 'main'
         type: string
@@ -22,12 +22,6 @@ jobs:
       id-token: write
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout specified ref
-        uses: actions/checkout@v4
-        with:
-          ref: ${{ inputs.ref }}
-          fetch-depth: 0
-
       - name: Configure Git
         run: |
           git config user.name "$GITHUB_ACTOR"
@@ -44,32 +38,68 @@ jobs:
           tar -xzf chart-releaser_1.8.1_linux_amd64.tar.gz
           mv cr /usr/local/bin/cr
 
-      - name: Find and package all charts
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Process all refs and package charts
         run: |
           mkdir -p .cr-release-packages
           
-          CHARTS_FOUND=0
-          echo "Searching for charts in: ${{ inputs.charts_dir }}"
+          TOTAL_CHARTS=0
+          PROCESSED_REFS=""
           
-          for chart_dir in "${{ inputs.charts_dir }}"/*/; do
-            if [ -f "${chart_dir}/Chart.yaml" ]; then
-              echo "Found chart in: ${chart_dir}"
-              CHARTS_FOUND=$((CHARTS_FOUND + 1))
-              
-              # Update dependencies and package chart
-              helm dependency update "${chart_dir}"
-              helm package "${chart_dir}" --destination .cr-release-packages
+                    # Simple parsing: split by comma and trim spaces
+          IFS=',' read -ra refs_array <<< "${{ inputs.refs }}"
+
+          for ref in "${refs_array[@]}"; do
+            ref=$(echo "$ref" | xargs)  # trim whitespace
+            if [ -n "$ref" ]; then
+              echo "========================================="
+              echo "Processing ref: $ref"
+              echo "========================================="
+
+              # Checkout the specific ref
+              git checkout "$ref"
+
+              CHARTS_FOUND=0
+              echo "Searching for charts in: ${{ inputs.charts_dir }}"
+
+              for chart_dir in "${{ inputs.charts_dir }}"/*/; do
+                if [ -f "${chart_dir}/Chart.yaml" ]; then
+                  echo "Found chart in: ${chart_dir}"
+                  CHARTS_FOUND=$((CHARTS_FOUND + 1))
+
+                  # Update dependencies and package chart
+                  helm dependency update "${chart_dir}"
+                  helm package "${chart_dir}" --destination .cr-release-packages
+                fi
+              done
+
+              echo "Charts found in $ref: $CHARTS_FOUND"
+              TOTAL_CHARTS=$((TOTAL_CHARTS + CHARTS_FOUND))
+              PROCESSED_REFS="$PROCESSED_REFS $ref"
             fi
           done
-          
-          echo "Total charts found: $CHARTS_FOUND"
-          if [ $CHARTS_FOUND -eq 0 ]; then
-            echo "No charts found in ${{ inputs.charts_dir }}"
+
+          echo "========================================="
+          echo "Summary:"
+          echo "Total charts packaged: $TOTAL_CHARTS"
+          echo "Processed refs: $PROCESSED_REFS"
+          echo "========================================="
+
+          if [ $TOTAL_CHARTS -eq 0 ]; then
+            echo "No charts found in any of the specified refs"
             exit 1
           fi
-          
-          echo "Packaged charts:"
+
+          echo "All packaged charts:"
           ls -la .cr-release-packages/
+
+          # Save info for summary
+          echo "TOTAL_CHARTS=$TOTAL_CHARTS" >> $GITHUB_ENV
+          echo "PROCESSED_REFS=$PROCESSED_REFS" >> $GITHUB_ENV
 
       - name: Upload all chart releases
         run: |
@@ -96,9 +126,9 @@ jobs:
       - name: Summary
         run: |
           echo "## Manual Release Summary" >> $GITHUB_STEP_SUMMARY
-          echo "- **Source**: ${{ inputs.ref }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Processed Refs**: $PROCESSED_REFS" >> $GITHUB_STEP_SUMMARY
           echo "- **Charts Directory**: ${{ inputs.charts_dir }}" >> $GITHUB_STEP_SUMMARY
-          echo "- **Charts Found**: $(ls .cr-release-packages/ | wc -l)" >> $GITHUB_STEP_SUMMARY
-          echo "- **Packaged Charts**: $(ls .cr-release-packages/)" >> $GITHUB_STEP_SUMMARY
+          echo "- **Total Charts Packaged**: $TOTAL_CHARTS" >> $GITHUB_STEP_SUMMARY
+          echo "- **Packaged Files**: $(ls .cr-release-packages/ | tr '\n' ', ' | sed 's/, $//')" >> $GITHUB_STEP_SUMMARY
           echo "- **Deployed to**: gh-pages branch" >> $GITHUB_STEP_SUMMARY
-          echo "- **GitHub Releases**: Created for each chart" >> $GITHUB_STEP_SUMMARY 
+          echo "- **GitHub Releases**: Created for each chart version" >> $GITHUB_STEP_SUMMARY
