@@ -1,0 +1,249 @@
+apiVersion: v1
+entries:
+  app:
+  - apiVersion: v1
+    created: "2025-07-29T18:19:46.427889467Z"
+    description: Universal Helm chart for application. Uses [semantic versioning](https://semver.org/)
+      for safe updates and compatibility. Documentation generated with [helm-docs](https://github.com/norwoodj/helm-docs)
+    digest: 9566706178a7403708d04fbe69f48044075a6b17c08d49b96203eb3cdf0aac22
+    home: https://himaster.github.io/charts/
+    maintainers:
+    - email: vitalibicov83@gmail.com
+      name: himaster
+    name: app
+    urls:
+    - https://github.com/neonlabsorg/charts/releases/download/app-1.3.12/app-1.3.12.tgz
+    version: 1.3.12
+  - apiVersion: v1
+    created: "2025-07-29T18:19:46.227046246Z"
+    description: Universal Helm chart for application. Uses [semantic versioning](https://semver.org/)
+      for safe updates and compatibility. Documentation generated with [helm-docs](https://github.com/norwoodj/helm-docs)
+    digest: 0db01076aa73b377f6ca7cd811b6107f38e6de68ac61c1913e990f37f8fe21c6
+    home: https://himaster.github.io/charts/
+    maintainers:
+    - email: vitalibicov83@gmail.com
+      name: himaster
+    name: app
+    urls:
+    - https://github.com/neonlabsorg/charts/releases/download/app-1.3.11/app-1.3.11.tgz
+    version: 1.3.11
+  - apiVersion: v1
+    created: "2025-07-29T18:19:45.985606453Z"
+    description: Universal Helm chart for application. Uses [semantic versioning](https://semver.org/)
+      for safe updates and compatibility. Documentation generated with [helm-docs](https://github.com/norwoodj/helm-docs)
+    digest: 27b971ef79612744478a7963781cef2021cef8deb6c2496056e73854ec3db717
+    home: https://himaster.github.io/charts/
+    maintainers:
+    - email: vitalibicov83@gmail.com
+      name: himaster
+    name: app
+    urls:
+    - https://github.com/neonlabsorg/charts/releases/download/app-1.3.10/app-1.3.10.tgz
+    version: 1.3.10
+  - apiVersion: v1
+    created: "2025-07-29T18:19:48.008503676Z"
+    description: Universal Helm chart for application. Uses [semantic versioning](https://semver.org/)
+      for safe updates and compatibility. Documentation generated with [helm-docs](https://github.com/norwoodj/helm-docs)
+    digest: 753f69105fabbbc811f584d4ec4e787a90ebf55510bf4b18496ee88e760e7f04
+    home: https://himaster.github.io/charts/
+    maintainers:
+    - email: vitalibicov83@gmail.com
+      name: himaster
+    name: app
+    urls:
+    - https://github.com/neonlabsorg/charts/releases/download/app-1.3.9/app-1.3.9.tgz
+    version: 1.3.9
+  - apiVersion: v1
+    created: "2025-07-29T18:19:47.815409586Z"
+    description: Universal Helm chart for application. Uses [semantic versioning](https://semver.org/)
+      for safe updates and compatibility. Documentation generated with [helm-docs](https://github.com/norwoodj/helm-docs)
+    digest: b417c2651401503dd23b91835c8a1427ed07206826c9a41ffd0ccc2ba32b4a69
+    home: https://himaster.github.io/charts/
+    maintainers:
+    - email: vitalibicov83@gmail.com
+      name: himaster
+    name: app
+    urls:
+    - https://github.com/neonlabsorg/charts/releases/download/app-1.3.8/app-1.3.8.tgz
+    version: 1.3.8
+  - apiVersion: v1
+    created: "2025-07-29T18:19:47.611716427Z"
+    description: Universal Helm chart for application. Uses [semantic versioning](https://semver.org/)
+      for safe updates and compatibility. Documentation generated with [helm-docs](https://github.com/norwoodj/helm-docs)
+    digest: 452b44998ab0965a92c65d63639ff198972d2f00ee80d2dae27b4e3fd3079f08
+    home: https://himaster.github.io/charts/
+    maintainers:
+    - email: vitalibicov83@gmail.com
+      name: himaster
+    name: app
+    urls:
+    - https://github.com/neonlabsorg/charts/releases/download/app-1.3.7/app-1.3.7.tgz
+    version: 1.3.7
+  - apiVersion: v1
+    created: "2025-07-29T18:19:47.384339542Z"
+    description: Universal Helm chart for application. Uses [semantic versioning](https://semver.org/)
+      for safe updates and compatibility. Documentation generated with [helm-docs](https://github.com/norwoodj/helm-docs)
+    digest: 85175be72ebc3c9123924808fd0770515a7cbbbab188f735a09b9526bb2d1248
+    home: https://himaster.github.io/charts/
+    maintainers:
+    - email: vitalibicov83@gmail.com
+      name: himaster
+    name: app
+    urls:
+    - https://github.com/neonlabsorg/charts/releases/download/app-1.3.6/app-1.3.6.tgz
+    version: 1.3.6
+  - apiVersion: v1
+    created: "2025-07-29T18:19:47.188143054Z"
+    description: Universal Helm chart for application. Uses [semantic versioning](https://semver.org/)
+      for safe updates and compatibility. Documentation generated with [helm-docs](https://github.com/norwoodj/helm-docs)
+    digest: 83258491d301dfbb5c1196fd06a33ad93e3b2b287738f78f3fbf84c5b75a3e83
+    home: https://himaster.github.io/charts/
+    maintainers:
+    - email: vitalibicov83@gmail.com
+      name: himaster
+    name: app
+    urls:
+    - https://github.com/neonlabsorg/charts/releases/download/app-1.3.5/app-1.3.5.tgz
+    version: 1.3.5
+  - apiVersion: v1
+    created: "2025-07-29T18:19:47.020677797Z"
+    description: Universal Helm chart for application. Uses [semantic versioning](https://semver.org/)
+      for safe updates and compatibility. Documentation generated with [helm-docs](https://github.com/norwoodj/helm-docs)
+    digest: 4093236346468e50bf2c5d4a0252d5620cee6430ae4987605b1b3f2b29ba69a9
+    home: https://himaster.github.io/charts/
+    maintainers:
+    - email: vitalibicov83@gmail.com
+      name: himaster
+    name: app
+    urls:
+    - https://github.com/neonlabsorg/charts/releases/download/app-1.3.4/app-1.3.4.tgz
+    version: 1.3.4
+  - apiVersion: v1
+    created: "2025-07-29T18:19:46.844713879Z"
+    description: Universal Helm chart for application. Uses [semantic versioning](https://semver.org/)
+      for safe updates and compatibility. Documentation generated with [helm-docs](https://github.com/norwoodj/helm-docs)
+    digest: ddedc1ff074856cad231545f79c8e20920221884165c496efec661407db8b8c4
+    home: https://himaster.github.io/charts/
+    maintainers:
+    - email: vitalibicov83@gmail.com
+      name: himaster
+    name: app
+    urls:
+    - https://github.com/neonlabsorg/charts/releases/download/app-1.3.3/app-1.3.3.tgz
+    version: 1.3.3
+  - apiVersion: v1
+    created: "2025-07-29T18:19:46.675676036Z"
+    description: Universal Helm chart for application. Uses [semantic versioning](https://semver.org/)
+      for safe updates and compatibility. Documentation generated with [helm-docs](https://github.com/norwoodj/helm-docs)
+    digest: 83e24ed0fc2d65a0b93c732dc37cf0f9d5b5250ae44280c86e842a8a719215a2
+    home: https://himaster.github.io/charts/
+    maintainers:
+    - email: vitalibicov83@gmail.com
+      name: himaster
+    name: app
+    urls:
+    - https://github.com/neonlabsorg/charts/releases/download/app-1.3.2/app-1.3.2.tgz
+    version: 1.3.2
+  - apiVersion: v1
+    created: "2025-07-29T18:19:45.787458375Z"
+    description: Universal Helm chart for application. Uses [semantic versioning](https://semver.org/)
+      for safe updates and compatibility. Documentation generated with [helm-docs](https://github.com/norwoodj/helm-docs)
+    digest: 28401a6b5bce1a6f61fe9bb0d9ecc451b48ee06f1fb64ecd25b00106650e5cd9
+    home: https://himaster.github.io/charts/
+    maintainers:
+    - email: vitalibicov83@gmail.com
+      name: himaster
+    name: app
+    urls:
+    - https://github.com/neonlabsorg/charts/releases/download/app-1.3.1/app-1.3.1.tgz
+    version: 1.3.1
+  - apiVersion: v1
+    created: "2025-07-29T18:19:45.580357535Z"
+    description: Universal Helm chart for application. Uses [semantic versioning](https://semver.org/)
+      for safe updates and compatibility. Documentation generated with [helm-docs](https://github.com/norwoodj/helm-docs)
+    digest: f619a1d0849318797ee6e86c0f5b22daa69fa97daf8d4196de9bd95b2c9703b6
+    home: https://himaster.github.io/charts/
+    maintainers:
+    - email: vitalibicov83@gmail.com
+      name: himaster
+    name: app
+    urls:
+    - https://github.com/neonlabsorg/charts/releases/download/app-1.3.0/app-1.3.0.tgz
+    version: 1.3.0
+  - apiVersion: v1
+    created: "2025-07-29T18:19:45.405101075Z"
+    description: Universal Helm chart for application. Uses [semantic versioning](https://semver.org/)
+      for safe updates and compatibility. Documentation generated with [helm-docs](https://github.com/norwoodj/helm-docs)
+    digest: f3ac3ab066a596c2198df7181ee2f98dfd3bb89008e161bd685ec342c40b46ea
+    home: https://himaster.github.io/charts/
+    maintainers:
+    - email: vitalibicov83@gmail.com
+      name: himaster
+    name: app
+    urls:
+    - https://github.com/neonlabsorg/charts/releases/download/app-1.2.2/app-1.2.2.tgz
+    version: 1.2.2
+  - apiVersion: v1
+    created: "2025-07-29T18:19:45.217636652Z"
+    description: Universal Helm chart for application. Uses [semantic versioning](https://semver.org/)
+      for safe updates and compatibility. Documentation generated with [helm-docs](https://github.com/norwoodj/helm-docs)
+    digest: a21f470a8ca4f39d19387172b20d47d6ec8152a159961dfb820243f33408a603
+    home: https://himaster.github.io/charts/
+    maintainers:
+    - email: vitalibicov83@gmail.com
+      name: himaster
+    name: app
+    urls:
+    - https://github.com/neonlabsorg/charts/releases/download/app-1.2.1/app-1.2.1.tgz
+    version: 1.2.1
+  - apiVersion: v1
+    created: "2025-07-29T18:19:44.790099744Z"
+    description: Universal Helm chart for application. Uses [semantic versioning](https://semver.org/)
+      for safe updates and compatibility. Documentation generated with [helm-docs](https://github.com/norwoodj/helm-docs)
+    digest: 6ebcc890e549e2e21c5da6ba89ee06bb94dd98f04195de58000fd0353b15e3eb
+    home: https://himaster.github.io/charts/
+    maintainers:
+    - email: vitalibicov83@gmail.com
+      name: himaster
+    name: app
+    urls:
+    - https://github.com/neonlabsorg/charts/releases/download/app-1.1.1/app-1.1.1.tgz
+    version: 1.1.1
+  - apiVersion: v1
+    created: "2025-07-29T18:19:44.576173775Z"
+    description: Universal Helm chart for application. Uses [semantic versioning](https://semver.org/)
+      for safe updates and compatibility. Documentation generated with [helm-docs](https://github.com/norwoodj/helm-docs)
+    digest: 55aa84b02a69142e9a8dbb64351fcf937e41e27d560ace85b4d5c44e93871acc
+    home: https://himaster.github.io/charts/
+    maintainers:
+    - email: vitalibicov83@gmail.com
+      name: himaster
+    name: app
+    urls:
+    - https://github.com/neonlabsorg/charts/releases/download/app-1.1.0/app-1.1.0.tgz
+    version: 1.1.0
+  - apiVersion: v1
+    created: "2025-07-29T18:19:44.402084357Z"
+    description: Universal Helm chart for application. Uses [semantic versioning](https://semver.org/)
+      for safe updates and compatibility. Documentation generated with [helm-docs](https://github.com/norwoodj/helm-docs)
+    digest: ff2af2dfd51a67bbadc11f1ef6791e13d3729fee3f3b79c2fe57164f94d34261
+    maintainers:
+    - email: vitalibicov83@gmail.com
+      name: himaster
+    name: app
+    urls:
+    - https://github.com/neonlabsorg/charts/releases/download/app-1.0.8/app-1.0.8.tgz
+    version: 1.0.8
+  - apiVersion: v1
+    created: "2025-07-29T18:19:44.207546235Z"
+    description: Universal Helm chart for application. Uses [semantic versioning](https://semver.org/)
+      for safe updates and compatibility. Documentation generated with [helm-docs](https://github.com/norwoodj/helm-docs)
+    digest: bccdecbd473e531d292ad3d62eabd1d7811033108dc2bd2a26d2ccb2d29e07fc
+    maintainers:
+    - email: vitalibicov83@gmail.com
+      name: himaster
+    name: app
+    urls:
+    - https://github.com/neonlabsorg/charts/releases/download/app-1.0.7/app-1.0.7.tgz
+    version: 1.0.7
+generated: "2025-07-29T18:19:48.008622038Z"
