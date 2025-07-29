@@ -246,4 +246,247 @@ entries:
     urls:
     - https://github.com/neonlabsorg/charts/releases/download/app-1.0.7/app-1.0.7.tgz
     version: 1.0.7
-generated: "2025-07-29T18:19:48.008622038Z"
+  ipfs-cluster:
+  - annotations:
+      artifacthub.io/links: |
+        - name: Chart Source
+          url: https://github.com/paradeum-team/ipfs-cluster-chart
+        - name: Source
+          url: https://github.com/ipfs-cluster/ipfs-cluster
+    apiVersion: 1.0.6
+    created: "2025-07-29T18:28:28.071926398Z"
+    description: IPFS Cluster Chart
+    digest: 12e0d2300fb9193068474ff0616ba274c2ba3b490acc211672e257348a6015a3
+    home: https://ipfscluster.io/
+    keywords:
+    - ipfs
+    - ipfs-cluster
+    maintainers:
+    - email: 75710541@qq.com
+      name: liujinye
+      url: https://github.com/ss75710541
+    name: ipfs-cluster
+    urls:
+    - https://github.com/neonlabsorg/charts/releases/download/ipfs-cluster-0.0.30/ipfs-cluster-0.0.30.tgz
+    version: 0.0.30
+  - annotations:
+      artifacthub.io/links: |
+        - name: Chart Source
+          url: https://github.com/paradeum-team/ipfs-cluster-chart
+        - name: Source
+          url: https://github.com/ipfs-cluster/ipfs-cluster
+    apiVersion: 1.0.6
+    created: "2025-07-29T18:28:27.851406995Z"
+    description: IPFS Cluster Chart
+    digest: 5459df73a37fbdc24fa6165b5b0c11dc49bc2305f39351a9b7b4b396f01fbfee
+    home: https://ipfscluster.io/
+    keywords:
+    - ipfs
+    - ipfs-cluster
+    maintainers:
+    - email: 75710541@qq.com
+      name: liujinye
+      url: https://github.com/ss75710541
+    name: ipfs-cluster
+    urls:
+    - https://github.com/neonlabsorg/charts/releases/download/ipfs-cluster-0.0.29/ipfs-cluster-0.0.29.tgz
+    version: 0.0.29
+  - annotations:
+      artifacthub.io/links: |
+        - name: Chart Source
+          url: https://github.com/paradeum-team/ipfs-cluster-chart
+        - name: Source
+          url: https://github.com/ipfs-cluster/ipfs-cluster
+    apiVersion: 1.0.6
+    created: "2025-07-29T18:28:27.627583774Z"
+    description: IPFS Cluster Chart
+    digest: 5e470e115f897140da5a59899281d3a8004c4f9e7eb46fee85de28c64bb918d7
+    home: https://ipfscluster.io/
+    keywords:
+    - ipfs
+    - ipfs-cluster
+    maintainers:
+    - email: 75710541@qq.com
+      name: liujinye
+      url: https://github.com/ss75710541
+    name: ipfs-cluster
+    urls:
+    - https://github.com/neonlabsorg/charts/releases/download/ipfs-cluster-0.0.28/ipfs-cluster-0.0.28.tgz
+    version: 0.0.28
+  - annotations:
+      artifacthub.io/links: |
+        - name: Chart Source
+          url: https://github.com/paradeum-team/ipfs-cluster-chart
+        - name: Source
+          url: https://github.com/ipfs-cluster/ipfs-cluster
+    apiVersion: 1.0.6
+    created: "2025-07-29T18:28:27.436404761Z"
+    description: IPFS Cluster Chart
+    digest: 457c6847bc86c67d83340586e05bdd219cbfb0aef40881959f6dde893a45853c
+    home: https://ipfscluster.io/
+    keywords:
+    - ipfs
+    - ipfs-cluster
+    maintainers:
+    - email: 75710541@qq.com
+      name: liujinye
+      url: https://github.com/ss75710541
+    name: ipfs-cluster
+    urls:
+    - https://github.com/neonlabsorg/charts/releases/download/ipfs-cluster-0.0.27/ipfs-cluster-0.0.27.tgz
+    version: 0.0.27
+  - annotations:
+      artifacthub.io/links: |
+        - name: Chart Source
+          url: https://github.com/paradeum-team/ipfs-cluster-chart
+        - name: Source
+          url: https://github.com/ipfs-cluster/ipfs-cluster
+    apiVersion: 1.0.6
+    created: "2025-07-29T18:28:27.183453342Z"
+    description: IPFS Cluster Chart
+    digest: 6216801ad8eddf76cf00034e112bfaff0324e852f73f4a5a143e2ed4fb7e1cb4
+    home: https://ipfscluster.io/
+    keywords:
+    - ipfs
+    - ipfs-cluster
+    maintainers:
+    - email: 75710541@qq.com
+      name: liujinye
+      url: https://github.com/ss75710541
+    name: ipfs-cluster
+    urls:
+    - https://github.com/neonlabsorg/charts/releases/download/ipfs-cluster-0.0.26/ipfs-cluster-0.0.26.tgz
+    version: 0.0.26
+  - annotations:
+      artifacthub.io/links: |
+        - name: Chart Source
+          url: https://github.com/paradeum-team/ipfs-cluster-chart
+        - name: Source
+          url: https://github.com/ipfs-cluster/ipfs-cluster
+    apiVersion: 1.0.6
+    created: "2025-07-29T18:28:26.966525983Z"
+    description: IPFS Cluster Chart
+    digest: 1ff66a2aac147db668a1f58f4a3417c73b5dac111877278c3322c53356d99843
+    home: https://ipfscluster.io/
+    keywords:
+    - ipfs
+    - ipfs-cluster
+    maintainers:
+    - email: 75710541@qq.com
+      name: liujinye
+      url: https://github.com/ss75710541
+    name: ipfs-cluster
+    urls:
+    - https://github.com/neonlabsorg/charts/releases/download/ipfs-cluster-0.0.25/ipfs-cluster-0.0.25.tgz
+    version: 0.0.25
+  - annotations:
+      artifacthub.io/links: |
+        - name: Chart Source
+          url: https://github.com/paradeum-team/ipfs-cluster-chart
+        - name: Source
+          url: https://github.com/ipfs-cluster/ipfs-cluster
+    apiVersion: 1.0.6
+    created: "2025-07-29T18:28:26.747772639Z"
+    description: IPFS Cluster Chart
+    digest: d866743678b16b01edd0e81d836dde09142fd772a1adb8a49efde1cba5e4374d
+    home: https://ipfscluster.io/
+    keywords:
+    - ipfs
+    - ipfs-cluster
+    maintainers:
+    - email: 75710541@qq.com
+      name: liujinye
+      url: https://github.com/ss75710541
+    name: ipfs-cluster
+    urls:
+    - https://github.com/neonlabsorg/charts/releases/download/ipfs-cluster-0.0.24/ipfs-cluster-0.0.24.tgz
+    version: 0.0.24
+  - annotations:
+      artifacthub.io/links: |
+        - name: Chart Source
+          url: https://github.com/paradeum-team/ipfs-cluster-chart
+        - name: Source
+          url: https://github.com/ipfs-cluster/ipfs-cluster
+    apiVersion: 1.0.6
+    created: "2025-07-29T18:28:26.502401073Z"
+    description: IPFS Cluster Chart
+    digest: 6890defb911b2d2ed96464dd50376fa770a1e08e86b4745a9c2dda137188a66c
+    home: https://ipfscluster.io/
+    keywords:
+    - ipfs
+    - ipfs-cluster
+    maintainers:
+    - email: 75710541@qq.com
+      name: liujinye
+      url: https://github.com/ss75710541
+    name: ipfs-cluster
+    urls:
+    - https://github.com/neonlabsorg/charts/releases/download/ipfs-cluster-0.0.23/ipfs-cluster-0.0.23.tgz
+    version: 0.0.23
+  - annotations:
+      artifacthub.io/links: |
+        - name: Chart Source
+          url: https://github.com/paradeum-team/ipfs-cluster-chart
+        - name: Source
+          url: https://github.com/ipfs-cluster/ipfs-cluster
+    apiVersion: 1.0.6
+    created: "2025-07-29T18:28:26.319864533Z"
+    description: IPFS Cluster Chart
+    digest: b58950f8008939d4aadc54b68dd18e5d40884009d5f51a586515f7f5deee701f
+    home: https://ipfscluster.io/
+    keywords:
+    - ipfs
+    - ipfs-cluster
+    maintainers:
+    - email: 75710541@qq.com
+      name: liujinye
+      url: https://github.com/ss75710541
+    name: ipfs-cluster
+    urls:
+    - https://github.com/neonlabsorg/charts/releases/download/ipfs-cluster-0.0.22/ipfs-cluster-0.0.22.tgz
+    version: 0.0.22
+  - annotations:
+      artifacthub.io/links: |
+        - name: Chart Source
+          url: https://github.com/paradeum-team/ipfs-cluster-chart
+        - name: Source
+          url: https://github.com/ipfs-cluster/ipfs-cluster
+    apiVersion: 1.0.6
+    created: "2025-07-29T18:28:26.089303081Z"
+    description: IPFS Cluster Chart
+    digest: 31f5f7fae07ad6bc9fdb07417434ee5add14e582c73c3645c6a8ef914605223d
+    home: https://ipfscluster.io/
+    keywords:
+    - ipfs
+    - ipfs-cluster
+    maintainers:
+    - email: 75710541@qq.com
+      name: liujinye
+      url: https://github.com/ss75710541
+    name: ipfs-cluster
+    urls:
+    - https://github.com/neonlabsorg/charts/releases/download/ipfs-cluster-0.0.21/ipfs-cluster-0.0.21.tgz
+    version: 0.0.21
+  - annotations:
+      artifacthub.io/links: |
+        - name: Chart Source
+          url: https://github.com/paradeum-team/ipfs-cluster-chart
+        - name: Source
+          url: https://github.com/ipfs-cluster/ipfs-cluster
+    apiVersion: 1.0.6
+    created: "2025-07-29T18:28:25.855522432Z"
+    description: IPFS Cluster Chart
+    digest: 4786543bc9ecde9895019dc58116303ffe0ef9542f069b2801b72970d5ef22a9
+    home: https://ipfscluster.io/
+    keywords:
+    - ipfs
+    - ipfs-cluster
+    maintainers:
+    - email: 75710541@qq.com
+      name: liujinye
+      url: https://github.com/ss75710541
+    name: ipfs-cluster
+    urls:
+    - https://github.com/neonlabsorg/charts/releases/download/ipfs-cluster-0.0.20/ipfs-cluster-0.0.20.tgz
+    version: 0.0.20
+generated: "2025-07-29T18:28:28.072097177Z"
